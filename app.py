@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Feb 20 09:29:37 2024
-
-@author: orlei.araujo
-"""
-
 
 from flask import Flask, render_template, request
 import pandas as pd
@@ -152,4 +145,4 @@ def operation_result():
             error="Cannot perform calculation. Please check if you completed all the items"
         )       
 
-Flask_App.run()
+
