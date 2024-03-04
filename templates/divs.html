@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> PRISM-4c Calculator</title>
+  <!--link rel="stylesheet" href="/static/divs.css" /-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='divs.css') }}" /> 
+</head>
+<body>
+
+        <header class="navbar" >
+        
+        <div class="navbar__brand">
+        
+             <p> A tool for estimating mortality in pediatric onco-critical care: PRISM 4-c Calculator </p>
+                 
+        </div>
+       
+      
+        </header>
+<nav>
+    <div class="menu">
+        <ul class="navbar__navigation">
+   
+         <li> 
+            <a  href="https://graacc.org.br/" class="navbar__link">Our institution</a>
+                <ul> 
+                    <li><a  href="https://graacc.org.br/" class="navbar__link">Our hospital</a></li>
+                    <li><a  href="https://doe.graacc.org.br/" class="navbar__link">Donate to GRAACC</a></li>
+                </ul>
+            </li>
+                
+            <li class="navbar__link"> Other scores
+                <ul> 
+                    <li><a  href="https://www.cpccrn.org/calculators/prismiiicalculator/" class="navbar__link">PRISM III Calculator</a></li>
+                    <li> <a href="https://www.cpccrn.org/calculators/prismivcalculator/"class="navbar__link">PRISM IV Calculator</a></li>
+                </ul>
+            </li>
+      </ul>
+    </div>
+</nav>
+<div class='container'style="overflow-y:scroll;">
+    <div id="first">
+       
+            <form method="post" action="{{ url_for('operation_result') }}" id="calculator_form">
+                <div>
+                    <p class ="parag"><strong>Enter data:</strong></p>
+                         
+                    <label for="age">Age in months:</label>
+                    <input class="input" type="text" size="5" name="age" id="age">
+                   
+                    <label for="weight">Weight(kg):</label>
+                    <input type="text" size="5" name="weight" id="weight">
+                    
+                    <label for="stature">Stature(cm):</label>
+                    <input type="text" size="5" name="stature" id="stature">
+                    <p></p>
+                    <label for="sex">Sex  </label>
+                    <select id="sex" name="sex">
+                        <option value="">Please select</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        
+                    </select>
+                    
+
+                    <label for="pressaos">Systolic  Blood Pressure, mmHg   </label>
+                    
+
+                <select id="pressaos" name="pressaos">
+                    <option value="">Please select</option>
+                    <option value="0">Newborn &gt55</option>
+                    <option value="3">Newborn 40-55 </option>
+                    <option value="7">Newborn &lt40</option>
+                    <option value="0">Infant &gt65</option>
+                    <option value="3">Infant 45-65</option>
+                    <option value="7">Infant &lt45 </option>
+                    <option value="0">Child &gt75</option>
+                    <option value="3">Child 55-75</option>
+                    <option value="7">Child &lt75</option>
+                    <option value="0">Adolescent &gt85</option>
+                    <option value="3">Adolescent 65-85</option>
+                    <option value="7">Adolescent &lt65</option>
+                </select>
+                
+            </div>
+            <p></p>
+            <p></p>
+
+
+            <div>
+                <label for="heart">Heart rate,  beats per minute</label>
+                <select id="heart" name="heart">
+                    <option value="">Please select</option>
+                    <option value="0">Newborn/infant &lt215</option>
+                    <option value="3">Newborn/infant 215-225 </option>
+                    <option value="4">Newborn/infant &gt225</option>
+                    <option value="0">Child &lt185</option>
+                    <option value="3">Child 185-205</option>
+                    <option value="4">Child &gt205</option>
+                    <option value="0">Adolescent &lt145</option>
+                    <option value="3">Adolescent  145-155</option>
+                    <option value="4">Adolescent &gt155</option>
+                </select>
+            </div>
+            <p></p>
+            <p></p>
+
+            <div>
+                <label for="temp">Body temperature</label>
+                <select id="temp" name="temp"> 
+                    <option value="">Please select</option>
+                    <option value="3"> &lt33º C</option>
+                    <option value="0">33-40º C </option>
+                    <option value="3">&gt40º C</option>
+                </select>
+            </div>
+
+            <p></p>
+            <p></p>
+
+            <div>
+                <label for="glasgow">Glasgow Coma Scale </label>
+                <select id="glasgow" name="glasgow">
+                    <option value="">Please select</option>
+                    <option value="0"> &gt= 8</option>
+                    <option value="5"> &lt8</option>
+                </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+            <div>
+                <label for="pupils">Pupils </label>
+                <select id="pupils" name="pupils">
+                    <option value="">Please select</option>
+                    <option value="0"> Both reactive</option>
+                    <option value="7"> 1 reactive and 1 fixed &gt 3 mm</option>
+                    <option value="11"> Both fixed and &gt 3 mm</option>
+                </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+            <div>
+                <label for="acidosis">Acidosis </label>
+                <select id="acidosis" name="acidosis">
+                    <option value="">Please select</option>
+                    <option value="0"> pH &gt7.28</option>
+                    <option value="2"> 7-7.28</option>
+                    <option value="6"> &lt7</option>
+                </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+            <div>
+                <label for="alkalosis">Alkalosis </label>
+                <select id="alkalosis" name="alkalosis">
+                    <option value="">Please select</option>
+                    <option value="0"> &lt7.48</option>
+                    <option value="2"> 7.48 - 7.55</option>
+                    <option value="3"> &gt7.55</option>
+                </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+            <div>
+                <label for="pco2">PCO2 arterial or venous</label>
+                <select id="pco2" name="pco2">
+                    <option value="">Please select</option>
+                    <option value="0"> &lt50 mmHg </option>
+                    <option value="1"> 50 - 75 mmHg 	</option>
+                    <option value="3"> &gt75 mmHg </option>
+                </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+            <div>
+                <label for="tco2">Total CO2 or bicarbonate</label>
+                <select id="tco2" name="tco2">
+                    <option value="">Please select</option>
+                    <option value="0"> &lt=34 mEq/L </option>
+                    <option value="4"> &gt34 mEq/L 	</option>
+                    </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+
+            <div>
+                <label for="pao2">Arterial PaO2</label>
+                <select id="pao2" name="pao2"> 
+                    <option value="">Please select</option>
+                    <option value="0">&gt=50 mmHg </option>
+                    <option value="3"> 42-49.9 mmHg	</option>
+                    <option value="6"> &lt42 mmHg </option>
+                    </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+           
+          
+        </div>
+        <div id="second">
+            <div>
+                <label for="glucose">Glucose</label>
+                <select id="glucose" name="glucose"> 
+                    <option value="">Please select</option>
+                    <option value="0"> &lt= 200 mg/dL</option>
+                    <option value="2"> &gt200 mg/dL	</option>
+                   
+                    </select>
+            </div>
+                       
+            <p></p>
+            <p></p>
+           
+            <div>
+                <label for="potassium">Potassium</label>
+                <select id="potassium" name="potassium"> 
+                    <option value="">Please select</option>
+                    <option value="0"> &lt= 6.9 mEq/L</option>
+                    <option value="3"> &gt6.9 mEq/L	</option>
+                   
+                    </select>
+            </div>
+                       
+            <p></p>
+            <p></p>  
+            <div>
+                <label for="creat">Creatinine</label>
+                <select id="creat" name="creat"> 
+                    <option value="">Please select</option>
+                    <option value="0"> Newborn &lt= 0.85 mg/dL</option>
+                    <option value="2"> Newborn &gt0.85 mg/dL	</option>
+                    <option value="0"> Infant/child &lt= 0.90 mg/dL</option>
+                    <option value="2"> Infant/child &gt0.90 mg/dL	</option>
+                    <option value="0"> Adolescent &lt= 1.30 mg/dL</option>
+                    <option value="2"> Adolescent &gt1.30 mg/dL	</option>
+
+                    </select>
+            </div>
+                       
+            <p></p>
+            <p></p>  
+            <div>
+                <label for="urea">Blood urea or BUN</label>
+                <select id="urea" name="urea"> 
+                    <option value="">Please select</option>
+                    <option value="0"> Newborn urea &lt= 25.5 (BUN: 11.9) mg/dL </option>
+                    <option value="3"> Newborn urea &gt25.5 (BUN: 11.9) mg/dL	</option>
+                    <option value="0"> Non-newborn &lt= 31.9 (BUN: 14.9) mg/dL</option>
+                    <option value="3"> Non-newborn &gt31.9 (BUN: 14.9) mg/dL	</option>
+                    
+
+                    </select>
+            </div>
+                       
+            <p></p>
+            <p></p>  
+            <div>
+                <label for="leuc">White blood cells</label>
+                <select id="leuc" name="leuc"> 
+                    <option value="">Please select</option>
+                    <option value="0"> &gt= 3000/µL </option>
+                    <option value="4"> &lt3000/µL 	</option>
+                                  
+                    </select>
+            </div>
+            <p></p>
+            <p></p> 
+            <div>
+                <label for="plaq">Platelets</label>
+                <select id="plaq" name="plaq"> 
+                    <option value="">Please select</option>
+                    <option value="0"> &gt= 200000/µL </option>
+                    <option value="2"> 100000-200000/µL 	</option>
+                    <option value="4"> 50000-99000 /µL	</option>             
+                    <option value="5"> &lt50000/µL 	</option>   
+                    </select>
+            </div>
+           
+                       
+            <p></p>
+            <p></p>  
+            <div>
+                <label for="coag">Coagulation tests</label>
+                <select id="coag" name="coag"> 
+                    <option value="">Please select</option>
+                    <option value="0"> Newborn PT &lt= 22s and PTT &lt= 85s </option>
+                    <option value="3"> Newborn PT &gt22s OR  PTT >85s  	</option>
+                    <option value="0"> Non-newborn PT &lt= 22s and PTT &lt= 57s 	</option>             
+                    <option value="3"> Non-newborn  &gt22s OR  PTT >57s	</option>   
+                    </select>
+            </div>
+           
+                       
+            <p></p>
+            <p></p>  
+            <div>
+                <label for="cir">Admission from operating room</label>
+                <select id="cir" name="cir"> 
+                    <option value="">Please select</option>
+                    <option value="1"> Yes </option>
+                    <option value="0"> No </option>
+                </select>
+            </div>
+            <p></p>
+            <p></p> 
+            <div>
+                <label for="irpa">Acute respiratory
+                    failure with mechanical ventilation</label>
+                <select id="irpa" name="irpa"> 
+                    <option value="">Please select</option>
+                    <option value="1"> Yes </option>
+                    <option value="0"> No </option>
+                </select>
+            </div>
+            <p></p>
+            <p></p>  
+            <div>
+                <label for="sepsis">Sepsis or septic shock</label>
+                <select id="sepsis" name="sepsis"> 
+                    <option value="">Please select</option>
+                    <option value="1"> Yes </option>
+                    <option value="0"> No </option>
+                </select>
+            </div>
+            <p></p>
+            <p></p> 
+            <div>
+                <label for="leuclinf">Relapse of lymphoma or leukemia</label>
+                <select id="leuclinf" name="leuclinf"> 
+                    <option value="">Please select</option>
+                    <option value="1"> Yes </option>
+                    <option value="0"> No </option>
+                </select>
+            </div>
+            <p></p> 
+            <p></p>
+            <p></p> 
+            <button type="submit" class="form__submit">Calculate</button>
+            <p></p>
+            <p></p> 
+            <p></p> 
+            <img class="fig6" src="{{ url_for('static', filename='fig6.png') }}" title= "AI generated figure, not a real person" alt="fig6"  >
+            
+            <p></p>
+            <p></p>
+            
+      
+        </div>
+
+        <div id="third">
+            <p class ="parag"><strong>Guidance for data collection:</strong></p>
+            <ul class="guide" >
+                <li class="guide1"  >Age: Newborn, 0 to 1 month; Infant &gtdot;1 month to 12 months; 
+                    Child &gt 12 months to 144 months; Adolescent: &gt 144 months.                
+                </li>
+                <li class="guide1" >Temperature can be oral, rectal, blood or axillary.</li>
+                <li>Neurological status includes only patients with known or suspected acute CNS disease. Do not use if &gt 2 hours of sedation, paralysis or
+                    anesthesia. If you are using continuous sedation and/or paralysis, use the period without sedation, paralysis or anesthesia close to ICU admission.
+                </li>
+                <li class="guide1" >Do not use heart rate value during crying or iatrogenic agitation</li>
+                <li class="guide1" >Non-reactive pupils must be &gt 3mm; do not use this criterion after iatrogenic dilation</li>
+                <li class="guide1" >Acid-base disturbance: use calculated bicarbonate only if total CO2 is not routinely measured. pH and PCO2 can be 
+                    arterial, capillary or venous sample.</li>
+                <li class="guide1"> PaO2 only arterial measurement.</li>
+              </ul>
+            
+            
+            
+                
+        </div>
+        <div id="fourth" >
+            
+            {% if calculation_success == True %}
+            <p><strong>Results:</strong></p>
+            <p>The Estimated probability of mortality is: {{prob}}%</p>
+            <p>The logit is: {{logit}}</p>
+            <p>The Neurologic variable subscore is: {{prismn}}</p>
+            <p>The Non-neurologic variable subscore is: {{prismnn}}</p>
+            <p>The IMC  is: {{resultimc}}</p>
+            <p>The -2 z score   is: {{sd}}</p>
+        {% endif %}
+        {% if calculation_success == False %}
+            <br/>
+            <p>{{error}}</p>
+            <p>{{input1}} {{operation}} {{input2}} = "{{result}}"</p>
+        {% endif %}
+        <img class="fig4" src="{{ url_for('static', filename='fig4.png') }}" title= "AI generated figure, not a real person" alt="fig"  >
+        <p></p>
+            <p></p>
+        <img class="fig5" src="{{ url_for('static', filename='fig5.png') }}" title= "AI generated figure, not a real person" alt="fig"  >
+            
+          
+            <p></p>
+        </div>
+        
+    </div>
+
+    
+        </form>
+            
+   
+</div>
+<div class=references>
+    <p class ="parag"><strong>Equations:</strong></p>
+    <p><strong>Logit =</strong> - 4.110 + (0.219 × PRISM IV neurologic) + (0.177 × PRISM IV non neurologic) + (1.264 × Relapse of lymphoma or leukemia) + (1.841 × Sepsis) + (1.412 
+        × Acute respiratory failure requiring mechanical ventilation) + (-1.16 × Admission 
+        from operating room) + (1.239 × Body Mass Index z-score &lt -2) </p>
+    <p> <strong>Probability =</strong> e^logit/(1+ e^logit); e = base of the natural logarithm or Euler's number, approximately equal to 2.71828.</p>
+    <p></p>
+
+    <ul ><strong>References:</strong>
+   <li>
+    <a href="https://pubmed.ncbi.nlm.nih.gov/32986390/" class="link">Leal PB, Araujo OR, Silva DCB, Petrilli AS. PRISM 4-C: An Adapted PRISM IV Algorithm for Children With Cancer. J Pediatr Hematol Oncol. 2020 Oct;42(7):e563-e568.</a>
+    </li>
+    <li>
+    <a href= "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5048467/"  class="link">  Pollack MM, Holubkov R, Funai T, Dean JM, Berger JT, Wessel DL, Meert K, Berg RA, Newth CJ, Harrison RE, Carcillo J, Dalton H, Shanley T, Jenkins TL, Tamburro R; 
+        Eunice Kennedy Shriver National Institute of Child Health and Human Development Collaborative Pediatric Critical Care Research Network. The Pediatric Risk of Mortality Score: Update 2015. Pediatr Crit Care Med. 
+            2016 Jan;17(1):2-9.</a>
+        </li>
+    </ul>
+            <p></p>
+            <p></p>
+            
+            <p>Disclaimer: This calculator tool is provided without any warranty of any kind, and is intended to be used only for quality control of onco-PICU care, by means of determining 
+                expected mortality rates, not for predicition of individual prognoses. The authors are not responsible for incorrect use of the calculator.</p>
+            
+</div>
+<footer class="footer">
+    <div class="footer__content">
+      <section class="left">
+        <a class="footer__item">Made by Orlei Araujo, MD</a>
+        <a class="footer__item" href="https://www.researchgate.net/profile/Orlei-Araujo">Check out my Researchgate profile</a>
+      </section>
+      <section class="right">
+        <div class="footer__column">
+            <a href="https://www.python.org/">
+            <img src="{{ url_for('static', filename='pylogo.png') }}" title= "Powered by" alt="fig"  >
+            </a>
+            <p></p>  
+            <a href="https://flask.palletsprojects.com/en/3.0.x//">
+            <img src="{{ url_for('static', filename='flask.png') }}" title= "Powered by" alt="fig"  >
+        </a>
+        </div>
+      </section>
+    </div>
+  </footer>
+</body>

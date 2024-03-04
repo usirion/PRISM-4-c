@@ -1,0 +1,112 @@
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+#header {
+    width: 92%;
+    height: 90px;
+    margin-top: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image:url("/static/deep.png");  /*background-image: linear-gradient(rgba(126, 127, 226, 0.5), rgb(248, 249, 250));*/
+    font-size: 36px;
+    color: #072a35;
+         display: flex;
+        align-items: top;
+        padding: 1rem;
+}
+.menu{
+    
+    background-color: aqua;
+
+}
+.container {
+    width: 100%;
+    margin: auto;
+    align-content: center;
+      
+}
+#first {
+    width: 25%;
+    float: left;
+    height: 800px;
+    background-color:#FFFFFF;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding:2rem;
+    color: rgb(54, 32, 32);
+    align-items: flex-start;
+    margin-left: 30px;
+    border:2px solid;
+    border-color: rgb(0, 225, 255);
+    border-radius: 12px;
+    margin-top: 10px;
+   
+    
+}
+#second {
+    width: 25%;
+    float: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 800px;
+    background-color: #FFFFFF;
+    color: rgb(43, 22, 22);
+    padding:2rem;
+    align-items: flex-start;
+    margin-left: 30px;
+    border:2px solid;
+    border-color: rgb(0, 225, 255);
+    border-radius: 12px;
+    margin-top: 10px;
+
+   
+}
+#third {
+    width: 25%;
+    float: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 800px;
+    background-color: #FFFFFF;
+    color: rgb(43, 22, 22);
+    padding:2rem;
+    align-items: flex-start;
+    margin-left: 30px;
+    border:2px solid;
+    border-color: rgb(0, 225, 255);
+    border-radius: 12px;
+    margin-top: 10px;
+   
+}
+.form{
+    display: flex;
+     flex-direction: column;
+    align-items:flex-start;
+   
+}
+
+select {
+    appearance: none;
+    background-color: azure;
+    color: #090018;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell; }
+input { display: table-cell; }
+
+div{
+    line-height: 25px;
+}
+.form__submit, .form__reset {
+    background-color: #3cd0ff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 30px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+  }
