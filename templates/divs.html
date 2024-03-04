@@ -40,7 +40,7 @@
       </ul>
     </div>
 </nav>
-<div class='container'style="overflow-y:scroll;">
+<div class='container'style="overflow-y:scroll;"><!--1o container-->
     <div id="first">
        
             <form method="post" action="{{ url_for('operation_result') }}" id="calculator_form">
@@ -205,8 +205,26 @@
             <p></p>
            
           
-        </div>
-        <div id="second">
+    </div>
+    <div id="second">
+        {% if calculation_success == True %}
+        <p><strong style="color: purple">Results:</strong></p>
+        <p style="color: rgb(0, 2, 128)">The Estimated probability of mortality is: {{prob}}%</p>
+        <p style="color: rgb(0, 2, 128)">The logit is: {{logit}}</p>
+        <p style="color: rgb(0, 2, 128)">The Neurologic variable subscore is: {{prismn}}</p>
+        <p style="color: rgb(0, 2, 128)">The Non-neurologic variable subscore is: {{prismnn}}</p>
+        <p style="color: rgb(0, 2, 128)">The IMC  is: {{resultimc}}</p>
+        <p style="color: rgb(0, 2, 128)">The -2 z score   is: {{sd}}</p>
+    {% endif %}
+   
+    <p></p>
+    {% if calculation_success == False %}
+        <br/>
+        <p style="color: rgb(128, 0, 85)">{{error}}</p>
+        <!--p>{{input1}} {{operation}} {{input2}} = "{{result}}"</p-->
+    {% endif %}
+    <p>........................</p>
+    <p></p>
             <div>
                 <label for="glucose">Glucose</label>
                 <select id="glucose" name="glucose"> 
@@ -348,14 +366,14 @@
             <p></p>
             <p></p> 
             <p></p> 
-            <img class="fig6" src="{{ url_for('static', filename='fig6.png') }}" title= "AI generated figure, not a real person" alt="fig6"  >
-            
+         
             <p></p>
             <p></p>
             
-      
-        </div>
-
+        </form>
+    </div>
+</div><!--fim do 1] container-->   
+    <div class='container'style="overflow-y:scroll;"><!--inicio do 2o container-->
         <div id="third">
             <p class ="parag"><strong>Guidance for data collection:</strong></p>
             <ul class="guide" >
@@ -379,25 +397,13 @@
         </div>
         <div id="fourth" >
             
-            {% if calculation_success == True %}
-            <p><strong>Results:</strong></p>
-            <p>The Estimated probability of mortality is: {{prob}}%</p>
-            <p>The logit is: {{logit}}</p>
-            <p>The Neurologic variable subscore is: {{prismn}}</p>
-            <p>The Non-neurologic variable subscore is: {{prismnn}}</p>
-            <p>The IMC  is: {{resultimc}}</p>
-            <p>The -2 z score   is: {{sd}}</p>
-        {% endif %}
-        {% if calculation_success == False %}
-            <br/>
-            <p>{{error}}</p>
-            <p>{{input1}} {{operation}} {{input2}} = "{{result}}"</p>
-        {% endif %}
+          
         <img class="fig4" src="{{ url_for('static', filename='fig4.png') }}" title= "AI generated figure, not a real person" alt="fig"  >
         <p></p>
             <p></p>
         <img class="fig5" src="{{ url_for('static', filename='fig5.png') }}" title= "AI generated figure, not a real person" alt="fig"  >
-            
+        <img class="fig6" src="{{ url_for('static', filename='fig6.png') }}" title= "AI generated figure, not a real person" alt="fig6"  >
+              
           
             <p></p>
         </div>
@@ -405,9 +411,11 @@
     </div>
 
     
-        </form>
-            
+                   
    
+    </div><!--fim do 2o container-->
+        
+       
 </div>
 <div class=references>
     <p class ="parag"><strong>Equations:</strong></p>
